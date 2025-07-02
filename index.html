@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rainbow Jewelry | 安全访问</title>
+    <title>Rainbow Jewelry | 奢华珠宝产品目录</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -19,32 +19,34 @@
             min-height: 100vh;
             overflow-x: hidden;
             padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
         
-        /* ================= 密码页面样式 ================= */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        /* 密码部分 */
         .login-container {
-            width: 100%;
-            max-width: 500px;
             background: rgba(15, 10, 29, 0.9);
             backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 40px 30px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
+            max-width: 500px;
+            margin: 50px auto;
         }
         
         .login-header {
+            text-align: center;
             margin-bottom: 35px;
         }
         
         .login-header h1 {
             font-size: 2.5rem;
             margin-bottom: 10px;
-            background: linear-gradient(45deg, #00b4db, #0083b0);
+            background: linear-gradient(45deg, #d4af37, #ffd700, #e5e4e2);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -116,20 +118,20 @@
             padding: 16px;
             border-radius: 12px;
             border: none;
-            background: linear-gradient(45deg, #0ea5e9, #0284c7);
-            color: white;
+            background: linear-gradient(45deg, #d4af37, #ffd700);
+            color: #1a0938;
             font-size: 18px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             margin-top: 10px;
-            box-shadow: 0 4px 15px rgba(2, 132, 199, 0.4);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
         }
         
         .submit-btn:hover {
-            background: linear-gradient(45deg, #0284c7, #0ea5e9);
+            background: linear-gradient(45deg, #ffd700, #d4af37);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(2, 132, 199, 0.6);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
         }
         
         .error-message {
@@ -158,12 +160,9 @@
             animation: shake 0.5s;
         }
         
-        /* ================= 产品目录样式 ================= */
+        /* 产品目录部分 */
         #catalog-container {
             display: none;
-            width: 100%;
-            max-width: 1400px;
-            margin: 0 auto;
         }
         
         .catalog-header {
@@ -214,57 +213,77 @@
             font-style: italic;
         }
         
-        .catalog {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 35px;
-            padding: 20px;
-        }
-        
-        .category-section {
-            background: rgba(22, 16, 45, 0.85);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(106, 90, 205, 0.3);
-            backdrop-filter: blur(10px);
-        }
-        
-        .category-header {
-            text-align: center;
+        .controls {
+            display: flex;
+            justify-content: space-between;
             margin-bottom: 30px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid rgba(138, 43, 226, 0.4);
+            background: rgba(22, 16, 45, 0.85);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
         }
         
-        .category-title {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+        .search-box {
+            position: relative;
+            width: 300px;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 12px 20px 12px 50px;
+            border-radius: 50px;
+            border: 2px solid #334155;
+            background: rgba(30, 22, 60, 0.8);
+            color: #f1f5f9;
+            font-size: 16px;
+        }
+        
+        .search-box i {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #64748b;
+            font-size: 18px;
+        }
+        
+        .category-filter {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .filter-btn {
+            padding: 10px 25px;
+            border-radius: 50px;
+            border: 2px solid #4a3c8f;
+            background: rgba(30, 22, 60, 0.8);
             color: #b19cd9;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
         }
         
-        .category-icon {
-            font-size: 2.5rem;
-            color: #9370db;
-            margin-bottom: 15px;
+        .filter-btn:hover, .filter-btn.active {
+            background: linear-gradient(45deg, #6a5acd, #9370db);
+            color: white;
+            border-color: #7b68ee;
         }
         
-        .products {
+        .catalog-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
         }
         
         .product-card {
-            background: rgba(30, 22, 60, 0.8);
-            border-radius: 15px;
-            padding: 25px;
-            transition: all 0.4s ease;
-            border: 1px solid rgba(123, 104, 238, 0.2);
-            position: relative;
+            background: rgba(22, 16, 45, 0.85);
+            border-radius: 20px;
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(106, 90, 205, 0.3);
+            position: relative;
         }
         
         .product-card::before {
@@ -273,8 +292,8 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, #6a5acd, #9370db, #ba55d3);
+            height: 5px;
+            background: linear-gradient(90deg, #d4af37, #ffd700, #e5e4e2);
         }
         
         .product-card:hover {
@@ -284,15 +303,8 @@
         }
         
         .product-image {
-            width: 100%;
-            height: 220px;
-            border-radius: 12px;
+            height: 250px;
             overflow: hidden;
-            margin-bottom: 20px;
-            background: #0f0c29;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             position: relative;
         }
         
@@ -307,35 +319,44 @@
             transform: scale(1.05);
         }
         
-        .product-image::after {
-            content: '';
+        .product-badge {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, rgba(58, 28, 113, 0.3), rgba(215, 109, 119, 0.2));
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(45deg, #d4af37, #ffd700);
+            color: #1a0938;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+            z-index: 2;
         }
         
         .product-info {
-            flex-grow: 1;
+            padding: 25px;
+        }
+        
+        .product-category {
+            color: #9370db;
+            font-size: 14px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .product-name {
             font-size: 1.8rem;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             color: #e6e6fa;
             font-weight: 700;
+            min-height: 60px;
         }
         
         .product-price {
             font-size: 1.7rem;
             color: #ffd700;
             font-weight: 700;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 10px 15px;
-            border-radius: 8px;
-            display: inline-block;
             margin-top: 15px;
         }
         
@@ -345,12 +366,14 @@
             font-style: italic;
         }
         
-        .jewel-details {
+        .product-stats {
             display: flex;
             justify-content: space-between;
             margin-top: 15px;
             color: #b19cd9;
             font-size: 1.1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 15px;
         }
         
         .catalog-footer {
@@ -401,14 +424,9 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
-        .category-section {
-            animation: fadeIn 0.8s ease forwards;
+        .product-card {
+            animation: fadeIn 0.6s ease forwards;
         }
-        
-        .category-section:nth-child(1) { animation-delay: 0.1s; }
-        .category-section:nth-child(2) { animation-delay: 0.2s; }
-        .category-section:nth-child(3) { animation-delay: 0.3s; }
-        .category-section:nth-child(4) { animation-delay: 0.4s; }
         
         .floating {
             animation: floating 3s ease-in-out infinite;
@@ -442,13 +460,25 @@
             100% { transform: translateX(100%) rotate(30deg); }
         }
         
+        @media (max-width: 1100px) {
+            .catalog-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+        
         @media (max-width: 768px) {
-            .login-container {
-                padding: 30px 20px;
+            .controls {
+                flex-direction: column;
+                gap: 15px;
             }
             
-            .login-header h1 {
-                font-size: 2rem;
+            .search-box {
+                width: 100%;
+            }
+            
+            .category-filter {
+                flex-wrap: wrap;
+                justify-content: center;
             }
             
             .catalog-title {
@@ -461,14 +491,6 @@
             
             .catalog-subtitle {
                 font-size: 1.2rem;
-            }
-            
-            .category-section {
-                padding: 20px;
-            }
-            
-            .category-title {
-                font-size: 2rem;
             }
             
             .product-name {
@@ -522,317 +544,543 @@
             <p class="catalog-subtitle">奢华珠宝系列 - 璀璨光芒与永恒优雅的完美结合</p>
         </header>
         
-        <div class="catalog">
-            <!-- 戒指系列 -->
-            <div class="category-section">
-                <div class="category-header">
-                    <div class="category-icon">
-                        <i class="fas fa-ring"></i>
-                    </div>
-                    <h2 class="category-title">戒指系列</h2>
+        <div class="controls">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="search-input" placeholder="搜索产品...">
+            </div>
+            
+            <div class="category-filter">
+                <button class="filter-btn active" data-category="all">全部产品</button>
+                <button class="filter-btn" data-category="ring">戒指</button>
+                <button class="filter-btn" data-category="earring">耳环</button>
+                <button class="filter-btn" data-category="necklace">项链</button>
+                <button class="filter-btn" data-category="bracelet">手镯</button>
+                <button class="filter-btn" data-category="watch">腕表</button>
+            </div>
+        </div>
+        
+        <div class="catalog-grid" id="product-grid">
+            <!-- 戒指系列 (8件) -->
+            <div class="product-card" data-category="ring">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="RING 01">
+                    <div class="product-badge">新品</div>
                 </div>
-                
-                <div class="products">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="RING 01">
-                        </div>
-                        <div class="product-info">
-                            <div class="product-name">RING 01</div>
-                            <div class="jewel-details">
-                                <span>白金镶嵌钻石</span>
-                                <span>3.2克拉</span>
-                            </div>
-                            <div class="product-price">¥6,999,600</div>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="https://images.unsplash.com/photo-1588449668365-d15e397f6787?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="RING 02">
-                        </div>
-                        <div class="product-info">
-                            <div class="product-name">RING 02</div>
-                            <div class="jewel-details">
-                                <span>玫瑰金镶嵌蓝宝石</span>
-                                <span>2.8克拉</span>
-                            </div>
-                            <div class="product-price">¥2,805,000</div>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="RING 03">
-                        </div>
-                        <div class="product-info">
-                            <div class="product-name">RING 03</div>
-                            <div class="jewel-details">
-                                <span>铂金镶嵌红宝石</span>
-                                <span>2.5克拉</span>
-                            </div>
-                            <div class="product-price">¥2,057,000</div>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="https://images.unsplash.com/photo-1605859465655-84c45e14a0af?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="RING 04">
-                        </div>
-                        <div class="product-info">
-                            <div class="product-name">RING 04</div>
-                            <div class="jewel-details">
-                                <span>黄金镶嵌祖母绿</span>
-                                <span>2.0克拉</span>
-                            </div>
-                            <div class="product-price">¥1,480,000</div>
-                        </div>
+                <div class="product-info">
+                    <div class="product-category"><i class="fas fa-ring"></i> 戒指系列</div>
+                    <div class="product-name">RING 01</div>
+                    <div class="product-price">¥6,999,600</div>
+                    <div class="product-stats">
+                        <span>白金钻石</span>
+                        <span>3.2克拉</span>
                     </div>
                 </div>
             </div>
             
-            <!-- 耳环系列 -->
-            <div class="category-section">
-                <div class="category-header">
-                    <div class="category-icon">
-                        <i class="fas fa-earrings"></i>
-                    </div>
-                    <h2 class="category-title">耳环系列</h2>
+            <div class="product-card" data-category="ring">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1588449668365-d15e397f6787?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="RING 02">
                 </div>
-                
-                <div class="products">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="https://images.unsplash.com/photo-1611348524109-e9b6d0d8c3f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="EARRING 01">
-                        </div>
-                        <div class="product-info">
-                            <div class="product-name">EARRING 01</div>
-                            <div class="jewel-details">
-                                <span>钻石流苏耳坠</span>
-                                <span>总重15.6克拉</span>
-                            </div>
-                            <div class="product-price">¥23,628,000</div>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="https://images.unsplash.com/photo-1622560480654-d96214fdc887?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="EARRING 02">
-                        </div>
-                        <div class="product-info">
-                            <div class="product-name">EARRING 02</div>
-                            <div class="jewel-details">
-                                <span>蓝宝石水滴耳环</span>
-                                <span>总重12.8克拉</span>
-                            </div>
-                            <div class="product-price">¥15,000,000</div>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="https://images.unsplash.com/photo-1611348586803-511c72ae2083?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="EARRING 03">
-                        </div>
-                        <div class="product-info">
-                            <div class="product-name">EARRING 03</div>
-                            <div class="jewel-details">
-                                <span>珍珠钻石耳钉</span>
-                                <span>南洋珍珠</span>
-                            </div>
-                            <div class="product-price">¥8,184,000</div>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="EARRING 04">
-                        </div>
-                        <div class="product-info">
-                            <div class="product-name">EARRING 04</div>
-                            <div class="jewel-details">
-                                <span>红宝石黄金耳环</span>
-                                <span>总重8.4克拉</span>
-                            </div>
-                            <div class="product-price">¥5,130,000</div>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="EARRING 05">
-                        </div>
-                        <div class="product-info">
-                            <div class="product-name">EARRING 05</div>
-                            <div class="jewel-details">
-                                <span>祖母绿钻石耳钉</span>
-                                <span>总重7.2克拉</span>
-                            </div>
-                            <div class="product-price">¥4,983,000</div>
-                        </div>
+                <div class="product-info">
+                    <div class="product-category"><i class="fas fa-ring"></i> 戒指系列</div>
+                    <div class="product-name">RING 02</div>
+                    <div class="product-price">¥2,805,000</div>
+                    <div class="product-stats">
+                        <span>玫瑰金蓝宝石</span>
+                        <span>2.8克拉</span>
                     </div>
                 </div>
             </div>
             
-            <!-- 项链系列 -->
-            <div class="category-section">
-                <div class="category-header">
-                    <div class="category-icon">
-                        <i class="fas fa-necklace"></i>
-                    </div>
-                    <h2 class="category-title">项链系列</h2>
+            <div class="product-card" data-category="ring">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="RING 03">
+                    <div class="product-badge">畅销</div>
                 </div>
-                
-                <div class="products">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="NECKLACE 01">
-                        </div>
-                        <div class="product-info">
-                            <div class="product-name">NECKLACE 01</div>
-                            <div class="jewel-details">
-                                <span>钻石瀑布项链</span>
-                                <span>总重62.5克拉</span>
-                            </div>
-                            <div class="product-price">¥47,000,000</div>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="NECKLACE 02">
-                        </div>
-                        <div class="product-info">
-                            <div class="product-name">NECKLACE 02</div>
-                            <div class="jewel-details">
-                                <span>蓝宝石铂金项链</span>
-                                <span>总重48.3克拉</span>
-                            </div>
-                            <div class="product-price">¥37,000,000</div>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="NECKLACE 03">
-                        </div>
-                        <div class="product-info">
-                            <div class="product-name">NECKLACE 03</div>
-                            <div class="jewel-details">
-                                <span>红宝石钻石项链</span>
-                                <span>总重35.7克拉</span>
-                            </div>
-                            <div class="product-price">¥23,914,000</div>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="NECKLACE 04">
-                        </div>
-                        <div class="product-info">
-                            <div class="product-name">NECKLACE 04</div>
-                            <div class="jewel-details">
-                                <span>祖母绿黄金项链</span>
-                                <span>总重28.4克拉</span>
-                            </div>
-                            <div class="product-price">¥11,550,000</div>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="https://images.unsplash.com/photo-1588449668365-d15e397f6787?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="NECKLACE 05">
-                        </div>
-                        <div class="product-info">
-                            <div class="product-name">NECKLACE 05</div>
-                            <div class="jewel-details">
-                                <span>珍珠钻石项链</span>
-                                <span>大溪地黑珍珠</span>
-                            </div>
-                            <div class="product-price">¥11,209,000</div>
-                        </div>
+                <div class="product-info">
+                    <div class="product-category"><i class="fas fa-ring"></i> 戒指系列</div>
+                    <div class="product-name">RING 03</div>
+                    <div class="product-price">¥2,057,000</div>
+                    <div class="product-stats">
+                        <span>铂金红宝石</span>
+                        <span>2.5克拉</span>
                     </div>
                 </div>
             </div>
             
-            <!-- 手镯系列 -->
-            <div class="category-section">
-                <div class="category-header">
-                    <div class="category-icon">
-                        <i class="fas fa-bracelet"></i>
-                    </div>
-                    <h2 class="category-title">手镯系列</h2>
+            <div class="product-card" data-category="ring">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1605859465655-84c45e14a0af?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="RING 04">
                 </div>
-                
-                <div class="products">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="https://images.unsplash.com/photo-1611348524109-e9b6d0d8c3f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="BRACELET 01">
-                        </div>
-                        <div class="product-info">
-                            <div class="product-name">BRACELET 01</div>
-                            <div class="jewel-details">
-                                <span>钻石永恒手镯</span>
-                                <span>总重42.8克拉</span>
-                            </div>
-                            <div class="product-price">¥22,000,000</div>
-                        </div>
+                <div class="product-info">
+                    <div class="product-category"><i class="fas fa-ring"></i> 戒指系列</div>
+                    <div class="product-name">RING 04</div>
+                    <div class="product-price">¥1,480,000</div>
+                    <div class="product-stats">
+                        <span>黄金祖母绿</span>
+                        <span>2.0克拉</span>
                     </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="https://images.unsplash.com/photo-1622560480654-d96214fdc887?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="BRACELET 02">
-                        </div>
-                        <div class="product-info">
-                            <div class="product-name">BRACELET 02</div>
-                            <div class="jewel-details">
-                                <span>蓝宝石铂金手镯</span>
-                                <span>总重35.2克拉</span>
-                            </div>
-                            <div class="product-price">¥14,773,000</div>
-                        </div>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="ring">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1570485071661-261ca5a2bd0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="RING 05">
+                </div>
+                <div class="product-info">
+                    <div class="product-category"><i class="fas fa-ring"></i> 戒指系列</div>
+                    <div class="product-name">RING 05</div>
+                    <div class="product-price">¥3,250,000</div>
+                    <div class="product-stats">
+                        <span>铂金钻石</span>
+                        <span>2.2克拉</span>
                     </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="https://images.unsplash.com/photo-1605859465655-84c45e14a0af?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="BRACELET 03">
-                        </div>
-                        <div class="product-info">
-                            <div class="product-name">BRACELET 03</div>
-                            <div class="jewel-details">
-                                <span>红宝石黄金手镯</span>
-                                <span>总重22.5克拉</span>
-                            </div>
-                            <div class="product-price">¥7,260,000</div>
-                        </div>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="ring">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1611348524148-95b1d84a6de8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="RING 06">
+                </div>
+                <div class="product-info">
+                    <div class="product-category"><i class="fas fa-ring"></i> 戒指系列</div>
+                    <div class="product-name">RING 06</div>
+                    <div class="product-price">¥4,120,000</div>
+                    <div class="product-stats">
+                        <span>玫瑰金钻石</span>
+                        <span>3.0克拉</span>
                     </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="https://images.unsplash.com/photo-1611348586803-511c72ae2083?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="BRACELET 04">
-                        </div>
-                        <div class="product-info">
-                            <div class="product-name">BRACELET 04</div>
-                            <div class="jewel-details">
-                                <span>祖母绿钻石手链</span>
-                                <span>总重15.3克拉</span>
-                            </div>
-                            <div class="product-price">¥3,828,000</div>
-                        </div>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="ring">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1602173574243-5f1a3f8d25ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="RING 07">
+                    <div class="product-badge">限量</div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category"><i class="fas fa-ring"></i> 戒指系列</div>
+                    <div class="product-name">RING 07</div>
+                    <div class="product-price">¥5,780,000</div>
+                    <div class="product-stats">
+                        <span>白金蓝宝石</span>
+                        <span>3.5克拉</span>
                     </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="BRACELET 05">
-                        </div>
-                        <div class="product-info">
-                            <div class="product-name">BRACELET 05</div>
-                            <div class="jewel-details">
-                                <span>定制限量版手镯</span>
-                                <span>即将发布</span>
-                            </div>
-                            <div class="product-price pending">价格待定</div>
-                        </div>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="ring">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1605859465655-84c45e14a0af?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="RING 08">
+                </div>
+                <div class="product-info">
+                    <div class="product-category"><i class="fas fa-ring"></i> 戒指系列</div>
+                    <div class="product-name">RING 08</div>
+                    <div class="product-price">¥2,950,000</div>
+                    <div class="product-stats">
+                        <span>黄金红宝石</span>
+                        <span>2.7克拉</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 耳环系列 (5件) -->
+            <div class="product-card" data-category="earring">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1611348524109-e9b6d0d8c3f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="EARRING 01">
+                </div>
+                <div class="product-info">
+                    <div class="product-category"><i class="fas fa-earrings"></i> 耳环系列</div>
+                    <div class="product-name">EARRING 01</div>
+                    <div class="product-price">¥23,628,000</div>
+                    <div class="product-stats">
+                        <span>钻石流苏</span>
+                        <span>15.6克拉</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="earring">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1622560480654-d96214fdc887?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="EARRING 02">
+                </div>
+                <div class="product-info">
+                    <div class="product-category"><i class="fas fa-earrings"></i> 耳环系列</div>
+                    <div class="product-name">EARRING 02</div>
+                    <div class="product-price">¥15,000,000</div>
+                    <div class="product-stats">
+                        <span>蓝宝石水滴</span>
+                        <span>12.8克拉</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="earring">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1611348586803-511c72ae2083?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="EARRING 03">
+                    <div class="product-badge">热卖</div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category"><i class="fas fa-earrings"></i> 耳环系列</div>
+                    <div class="product-name">EARRING 03</div>
+                    <div class="product-price">¥8,184,000</div>
+                    <div class="product-stats">
+                        <span>珍珠钻石</span>
+                        <span>南洋珍珠</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="earring">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="EARRING 04">
+                </div>
+                <div class="product-info">
+                    <div class="product-category"><i class="fas fa-earrings"></i> 耳环系列</div>
+                    <div class="product-name">EARRING 04</div>
+                    <div class="product-price">¥5,130,000</div>
+                    <div class="product-stats">
+                        <span>红宝石黄金</span>
+                        <span>8.4克拉</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="earring">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="EARRING 05">
+                </div>
+                <div class="product-info">
+                    <div class="product-category"><i class="fas fa-earrings"></i> 耳环系列</div>
+                    <div class="product-name">EARRING 05</div>
+                    <div class="product-price">¥4,983,000</div>
+                    <div class="product-stats">
+                        <span>祖母绿钻石</span>
+                        <span>7.2克拉</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 项链系列 (8件) -->
+            <div class="product-card" data-category="necklace">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="NECKLACE 01">
+                    <div class="product-badge">典藏</div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category"><i class="fas fa-necklace"></i> 项链系列</div>
+                    <div class="product-name">NECKLACE 01</div>
+                    <div class="product-price">¥47,000,000</div>
+                    <div class="product-stats">
+                        <span>钻石瀑布</span>
+                        <span>62.5克拉</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="necklace">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="NECKLACE 02">
+                </div>
+                <div class="product-info">
+                    <div class="product-category"><i class="fas fa-necklace"></i> 项链系列</div>
+                    <div class="product-name">NECKLACE 02</div>
+                    <div class="product-price">¥37,000,000</div>
+                    <div class="product-stats">
+                        <span>蓝宝石铂金</span>
+                        <span>48.3克拉</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="necklace">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="NECKLACE 03">
+                </div>
+                <div class="product-info">
+                    <div class="product-category"><i class="fas fa-necklace"></i> 项链系列</div>
+                    <div class="product-name">NECKLACE 03</div>
+                    <div class="product-price">¥23,914,000</div>
+                    <div class="product-stats">
+                        <span>红宝石钻石</span>
+                        <span>35.7克拉</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="necklace">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="NECKLACE 04">
+                </div>
+                <div class="product-info">
+                    <div class="product-category"><i class="fas fa-necklace"></i> 项链系列</div>
+                    <div class="product-name">NECKLACE 04</div>
+                    <div class="product-price">¥11,550,000</div>
+                    <div class="product-stats">
+                        <span>祖母绿黄金</span>
+                        <span>28.4克拉</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="necklace">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1588449668365-d15e397f6787?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="NECKLACE 05">
+                </div>
+                <div class="product-info">
+                    <div class="product-category"><i class="fas fa-necklace"></i> 项链系列</div>
+                    <div class="product-name">NECKLACE 05</div>
+                    <div class="product-price">¥11,209,000</div>
+                    <div class="product-stats">
+                        <span>珍珠钻石</span>
+                        <span>大溪地黑珍珠</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="necklace">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1611348524148-95b1d84a6de8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="NECKLACE 06">
+                </div>
+                <div class="product-info">
+                    <div class="product-category"><i class="fas fa-necklace"></i> 项链系列</div>
+                    <div class="product-name">NECKLACE 06</div>
+                    <div class="product-price">¥7,513,000</div>
+                    <div class="product-stats">
+                        <span>白金钻石</span>
+                        <span>18.5克拉</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="necklace">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1602173574243-5f1a3f8d25ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="NECKLACE 07">
+                </div>
+                <div class="product-info">
+                    <div class="product-category"><i class="fas fa-necklace"></i> 项链系列</div>
+                    <div class="product-name">NECKLACE 07</div>
+                    <div class="product-price">¥6,864,000</div>
+                    <div class="product-stats">
+                        <span>玫瑰金蓝宝石</span>
+                        <span>15.2克拉</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="necklace">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1570485071661-261ca5a2bd0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="NECKLACE 08">
+                    <div class="product-badge">新品</div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category"><i class="fas fa-necklace"></i> 项链系列</div>
+                    <div class="product-name">NECKLACE 08</div>
+                    <div class="product-price">¥5,768,400</div>
+                    <div class="product-stats">
+                        <span>黄金红宝石</span>
+                        <span>12.8克拉</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 手镯系列 (5件) -->
+            <div class="product-card" data-category="bracelet">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1611348524109-e9b6d0d8c3f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="BRACELET 01">
+                </div>
+                <div class="product-info">
+                    <div class="product-category"><i class="fas fa-bracelet"></i> 手镯系列</div>
+                    <div class="product-name">BRACELET 01</div>
+                    <div class="product-price">¥22,000,000</div>
+                    <div class="product-stats">
+                        <span>钻石永恒</span>
+                        <span>42.8克拉</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="bracelet">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1622560480654-d96214fdc887?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="BRACELET 02">
+                </div>
+                <div class="product-info">
+                    <div class="product-category"><i class="fas fa-bracelet"></i> 手镯系列</div>
+                    <div class="product-name">BRACELET 02</div>
+                    <div class="product-price">¥14,773,000</div>
+                    <div class="product-stats">
+                        <span>蓝宝石铂金</span>
+                        <span>35.2克拉</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="bracelet">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1605859465655-84c45e14a0af?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="BRACELET 03">
+                    <div class="product-badge">热卖</div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category"><i class="fas fa-bracelet"></i> 手镯系列</div>
+                    <div class="product-name">BRACELET 03</div>
+                    <div class="product-price">¥7,260,000</div>
+                    <div class="product-stats">
+                        <span>红宝石黄金</span>
+                        <span>22.5克拉</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="bracelet">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1611348586803-511c72ae2083?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="BRACELET 04">
+                </div>
+                <div class="product-info">
+                    <div class="product-category"><i class="fas fa-bracelet"></i> 手镯系列</div>
+                    <div class="product-name">BRACELET 04</div>
+                    <div class="product-price">¥3,828,000</div>
+                    <div class="product-stats">
+                        <span>祖母绿钻石</span>
+                        <span>15.3克拉</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="bracelet">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="BRACELET 05">
+                </div>
+                <div class="product-info">
+                    <div class="product-category"><i class="fas fa-bracelet"></i> 手镯系列</div>
+                    <div class="product-name">BRACELET 05</div>
+                    <div class="product-price pending">价格待定</div>
+                    <div class="product-stats">
+                        <span>定制限量版</span>
+                        <span>即将发布</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 手表系列 (8件) -->
+            <div class="product-card" data-category="watch">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1547996160-81dfa63595aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="WATCH 01">
+                    <div class="product-badge">典藏</div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category"><i class="fas fa-clock"></i> 腕表系列</div>
+                    <div class="product-name">WATCH 01</div>
+                    <div class="product-price">¥12,408,000</div>
+                    <div class="product-stats">
+                        <span>钻石铂金</span>
+                        <span>限量版</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="watch">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="WATCH 02">
+                </div>
+                <div class="product-info">
+                    <div class="product-category"><i class="fas fa-clock"></i> 腕表系列</div>
+                    <div class="product-name">WATCH 02</div>
+                    <div class="product-price">¥12,276,000</div>
+                    <div class="product-stats">
+                        <span>蓝宝石表盘</span>
+                        <span>瑞士制造</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="watch">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1539874754764-5a96559165b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="WATCH 03">
+                </div>
+                <div class="product-info">
+                    <div class="product-category"><i class="fas fa-clock"></i> 腕表系列</div>
+                    <div class="product-name">WATCH 03</div>
+                    <div class="product-price">¥9,064,000</div>
+                    <div class="product-stats">
+                        <span>红宝石镶嵌</span>
+                        <span>自动机械</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="watch">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1544829728-e5cb9eedc20e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="WATCH 04">
+                </div>
+                <div class="product-info">
+                    <div class="product-category"><i class="fas fa-clock"></i> 腕表系列</div>
+                    <div class="product-name">WATCH 04</div>
+                    <div class="product-price">¥7,896,900</div>
+                    <div class="product-stats">
+                        <span>祖母绿表盘</span>
+                        <span>18K黄金</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="watch">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1524592094714-0f0654e20314?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="WATCH 05">
+                    <div class="product-badge">畅销</div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category"><i class="fas fa-clock"></i> 腕表系列</div>
+                    <div class="product-name">WATCH 05</div>
+                    <div class="product-price">¥7,238,000</div>
+                    <div class="product-stats">
+                        <span>珍珠母贝钻石</span>
+                        <span>女士经典</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="watch">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1539874754764-5a96559165b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="WATCH 06">
+                </div>
+                <div class="product-info">
+                    <div class="product-category"><i class="fas fa-clock"></i> 腕表系列</div>
+                    <div class="product-name">WATCH 06</div>
+                    <div class="product-price">¥5,137,000</div>
+                    <div class="product-stats">
+                        <span>白金计时</span>
+                        <span>瑞士机芯</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="watch">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1547996160-81dfa63595aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="WATCH 07">
+                </div>
+                <div class="product-info">
+                    <div class="product-category"><i class="fas fa-clock"></i> 腕表系列</div>
+                    <div class="product-name">WATCH 07</div>
+                    <div class="product-price pending">价格待定</div>
+                    <div class="product-stats">
+                        <span>玫瑰金钻石</span>
+                        <span>即将发布</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="watch">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="WATCH 08">
+                </div>
+                <div class="product-info">
+                    <div class="product-category"><i class="fas fa-clock"></i> 腕表系列</div>
+                    <div class="product-name">WATCH 08</div>
+                    <div class="product-price pending">价格待定</div>
+                    <div class="product-stats">
+                        <span>铂金陀飞轮</span>
+                        <span>限量版</span>
                     </div>
                 </div>
             </div>
@@ -872,8 +1120,8 @@
             const loginSection = document.getElementById('login-section');
             const catalogContainer = document.getElementById('catalog-container');
             
-            // 设置您的密码（实际应用中应使用更安全的方法）
-            const correctPassword = "680828";
+            // 设置您的密码
+            const correctPassword = "Rainbow2023";
             
             // 切换密码可见性
             togglePassword.addEventListener('click', function() {
@@ -891,7 +1139,7 @@
                     loginSection.style.display = 'none';
                     catalogContainer.style.display = 'block';
                     
-                    // 更新URL但不刷新页面
+                    // 更新URL
                     history.pushState(null, null, "#unlocked");
                     
                     // 更新页面标题
@@ -924,37 +1172,45 @@
                 document.title = "Rainbow Jewelry | 产品目录";
             }
             
-            // 添加产品卡片的交互效果
+            // 产品筛选功能
+            const filterButtons = document.querySelectorAll('.filter-btn');
             const productCards = document.querySelectorAll('.product-card');
+            const searchInput = document.getElementById('search-input');
             
-            productCards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.zIndex = 10;
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    this.style.zIndex = 1;
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // 移除所有按钮的active类
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // 添加active类到当前按钮
+                    button.classList.add('active');
+                    
+                    const category = button.getAttribute('data-category');
+                    
+                    // 筛选产品
+                    productCards.forEach(card => {
+                        if (category === 'all' || card.getAttribute('data-category') === category) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
                 });
             });
             
-            // 添加滚动动画
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.animation = 'fadeIn 0.8s ease forwards';
-                        observer.unobserve(entry.target);
+            // 搜索功能
+            searchInput.addEventListener('input', () => {
+                const searchTerm = searchInput.value.toLowerCase();
+                
+                productCards.forEach(card => {
+                    const name = card.querySelector('.product-name').textContent.toLowerCase();
+                    const category = card.querySelector('.product-category').textContent.toLowerCase();
+                    
+                    if (name.includes(searchTerm) || category.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
                     }
                 });
-            }, observerOptions);
-            
-            document.querySelectorAll('.category-section').forEach(section => {
-                observer.observe(section);
             });
         });
     </script>
